@@ -1,20 +1,26 @@
 # Flexion
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`. It was created as a coding challenge as part of a job application.
+This is a [T3 Stack](https://create.t3.gg) project bootstrapped with `create-t3-app`. It was created as a coding challenge as part of a job application.
 
-## How do I run this?
+It is deployed via [Vercel](https://vercel.com) and available at https://flexion.vercel.app.
 
-As a Next.js application, running this locally should be as simple as:
+## How do I run this locally?
 
-1. Cloning the repo
-2. Downloading dependencies
+As a Next.js application, running this locally should be relatively simple.
 
-   `npm i`
+1. Clone the repo
+2. Download dependencies
 
-3. Running the dev server
+   `pnpm i`
 
-   `npm run dev`
+3. Run the dev server
+
+   `pnpm dev`
 
 ## What about deploying?
 
-...
+Any commits to the `main` branch will automatically trigger a redeploy, and commits to other branches will automatically build a preview site for test/staging.
+
+If this were a real application, we could lock down direct commits to `main` such that only PRs are allowed to modify that branch. This would allow us to enforce dev in separate branches, after which a PR could require code review, peer signoff, automated test validation, etc.
+
+Unfortunately, much of that functionality is locked behind a paid Github subscription, and thus is not configured as part of this repo. You imagination will have to suffice.
