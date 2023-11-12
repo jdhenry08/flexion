@@ -8,9 +8,11 @@ As a Next.js application, running this locally should be as simple as:
 
 1. Cloning the repo
 2. Downloading dependencies
+
    `npm i`
 
 3. Running the dev server
+
    `npm run dev`
 
 ## What about deploying?
