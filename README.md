@@ -6,16 +6,19 @@ It is deployed via [Vercel](https://vercel.com) and available at https://flexion
 
 ## How do I run this locally?
 
-As a Next.js application, running this locally should be relatively simple.
+As a Next.js application, running this locally should be relatively simple. These steps assume you already have a working React dev environment, including node, Typescript, and a package manager. If you're running from the included dev container spec, these should all be included (and you can skip the first three steps).
 
-1. Clone the repo
-2. Download dependencies
+1. Clone the repo<br>
+   `git clone https://github.com/jdhenry08/flexion.git`
 
-   `pnpm i`
+1. Enter the project directory<br>
+   `cd flexion`
 
-3. Run the dev server
+1. Download dependencies<br>
+   `npm install` | `yarn install` | `pnpm install`
 
-   `pnpm dev`
+1. Run the dev server<br>
+   `npm run dev` | `yarn dev` | `pnpm dev`
 
 ## What about deploying?
 

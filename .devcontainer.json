@@ -1,6 +1,6 @@
 {
   "name": "${localWorkspaceFolderBasename}",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:18",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node",
   "runArgs": [
     "--name",
     "${localWorkspaceFolderBasename}", // Container name
@@ -9,6 +9,11 @@
     "com.docker.compose.project=devcontainers" // Container group name
   ],
   "remoteUser": "node",
+  "postCreateCommand": [
+    "zsh",
+    "-c",
+    "SHELL=/bin/zsh pnpm setup && source ~/.zshrc && pnpm i -g pnpm vercel && pnpm install"
+  ],
   "workspaceMount": "source=${localEnv:HOME}/code,target=/code,type=bind,consistency=cached",
   "workspaceFolder": "/code/${localWorkspaceFolderBasename}",
   "features": {
