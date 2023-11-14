@@ -110,35 +110,42 @@ export default function HomePage() {
     const incorrectClasses = "bg-rose-900 text-red-200";
     const invalidClasses = "bg-yellow-900 text-amber-200";
 
-    if (inputUnit.length === 0 || outputUnit.length === 0)
-      return <p className={baseClasses}>Please fill out the form above</p>;
+    const inputVal = parseFloat(input);
+    const outputVal = parseFloat(output);
 
-    const inputVal = isNaN(parseFloat(input)) ? 0 : parseFloat(input);
-    const convertedVal =
-      convert(inputVal)[inputUnit]?.to[outputUnit]?.toFixed(1);
-    if (convertedVal === undefined)
+    if (inputUnit.length === 0 || outputUnit.length === 0) {
+      return <p className={baseClasses}>Please fill out the form above</p>;
+    }
+
+    const convertedVal = convert(inputVal)[inputUnit]?.to[outputUnit];
+    if (convertedVal === undefined) {
       return (
         <p className={cn(baseClasses, invalidClasses)}>
           Invalid: No conversion found between {inputUnit} and {outputUnit}
         </p>
       );
-    const outputVal = isNaN(parseFloat(output))
-      ? "0.0"
-      : parseFloat(output).toFixed(1);
+    }
+
+    if (isNaN(inputVal) || isNaN(outputVal)) {
+      return <p className={baseClasses}>Please fill out the form above</p>;
+    }
+
+    const inputRounded = inputVal.toFixed(1);
+    const convertedRounded = convertedVal.toFixed(1); // Correct answer
+    const outputRounded = outputVal.toFixed(1); // Student's answer
+
     return (
       <p
         className={cn(
           baseClasses,
-          convertedVal === outputVal ? correctClasses : incorrectClasses,
+          convertedRounded === outputRounded
+            ? correctClasses
+            : incorrectClasses,
         )}
       >
-        {convertedVal === outputVal
-          ? `Correct: ${inputVal.toFixed(
-              1,
-            )} ${inputUnit} = ${outputVal} ${outputUnit}`
-          : `Incorrect: ${inputVal.toFixed(
-              1,
-            )} ${inputUnit} = ${convertedVal} ${outputUnit}`}
+        {convertedRounded === outputRounded
+          ? `Correct: ${inputRounded} ${inputUnit} = ${outputRounded} ${outputUnit}`
+          : `Incorrect: ${inputRounded} ${inputUnit} = ${convertedRounded} ${outputUnit}`}
       </p>
     );
   }
